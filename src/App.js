@@ -1,22 +1,22 @@
-import logo from './logo.svg';
+import { useState } from 'react';
+import RaamatuDetail from './RaamatuDetail';
+import RaamatudList from './RaamatudList';
+
 import './App.css';
 
 function App() {
+  const [valitudRaamat, setValitudRaamat] = useState();
+
+  const valiRaamat = (raamat) => {
+    console.log('valiti raamat:', raamat);
+    setValitudRaamat(raamat)
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header className="App-header" style={{ display: 'flex', flexDirection: 'row', gap: 20 }}>
+        <RaamatudList setValitudRaamat={valiRaamat} />
+        {valitudRaamat && <RaamatuDetail raamat={valitudRaamat} />}
       </header>
     </div>
   );
